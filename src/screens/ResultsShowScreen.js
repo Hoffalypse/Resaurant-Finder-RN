@@ -19,9 +19,14 @@ const ResultsShowScreen = ({navigation}) => {
 if(!response){
     return null
 }
+
   return (
-    <View>
-      <Text>{response.name}</Text>
+    <View >
+        <View style={{marginLeft:'auto', marginRight:'auto', marginTop:15}}>
+      <Text style={{fontWeight:'bold', fontSize:18}}>{response.name}</Text>
+      <Text>{response.display_phone}</Text>
+      <Text style={{paddingBottom:25}}>{response.location.display_address}</Text>
+      
       <FlatList
       data={response.photos}
       keyExtractor={(photo) => photo}
@@ -29,6 +34,7 @@ if(!response){
         return <Image style={styles.image}source={{uri: item}}/>
       }}
       />
+      </View>
     </View>
   )
 }
@@ -37,6 +43,9 @@ const styles = StyleSheet.create({
     image: {
         height:120,
         width:200,
+        borderColor:'black',
+        borderWidth: 2,
+        marginBottom:10,
     }
 
 })
